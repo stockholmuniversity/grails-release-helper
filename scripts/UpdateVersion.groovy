@@ -25,9 +25,9 @@ target(updateVersion: "Update the application version & push a git tag with the 
     IndexDiff diff = new IndexDiff(repo, Constants.HEAD, new FileTreeIterator(repo))
     diff.diff()
 
-    Status status = new Status(diff);
+    Status st = new Status(diff);
 
-    if (status.isClean()) { // No modifications in the repo, we can proceed
+    if (!st.changed && !st.added && !st.modified && !st.missing && !st.removed) { // No modifications in the repo, we can proceed
       def currentVersion = metadata.'app.version'
 
       // Get new version from user input
@@ -57,11 +57,11 @@ target(updateVersion: "Update the application version & push a git tag with the 
     } else { // Repo is not clean, aborting
       StringBuilder msg = new StringBuilder()
       msg.append("Repo not clean, aborting version update.")
-      msg.append("\n").append("Changed:").append(status.getChanged())
-      msg.append("\n").append("Added:").append(status.getAdded())
-      msg.append("\n").append("Modified:").append(status.getModified())
-      msg.append("\n").append("Missing:").append(status.getMissing())
-      msg.append("\n").append("Removed:").append(status.getRemoved())
+      msg.append("\nChanged:").append(st.changed)
+      msg.append("\nAdded:").append(st.added)
+      msg.append("\nModified:").append(st.modified)
+      msg.append("\nMissing:").append(st.missing)
+      msg.append("\nRemoved:").append(st.removed)
       println(msg)
     }
   } catch (e) {
