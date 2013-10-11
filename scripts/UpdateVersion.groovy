@@ -27,7 +27,7 @@ target(updateVersion: "Update the application version & push a git tag with the 
 
     Status status = new Status(diff);
 
-    if (status.isClean()) { // No moddifications in the repo, we can proceed
+    if (status.isClean()) { // No modifications in the repo, we can proceed
       def currentVersion = metadata.'app.version'
 
       // Get new version from user input
@@ -50,8 +50,8 @@ target(updateVersion: "Update the application version & push a git tag with the 
       }
 
       def refs = [ // Refs to push
-              new RefSpec('refs/heads/master'),
-              new RefSpec("refs/tags/${newVersion}")
+              new RefSpec(Constants.R_HEADS + Constants.MASTER), // master ref
+              new RefSpec(Constants.R_TAGS + newVersion)         // the new tag
       ]
       git.push().setRemote(remote).setRefSpecs(refs).call()
     } else { // Repo is not clean, aborting
