@@ -40,7 +40,8 @@ grails.project.dependency.resolution = {
     }
     dependencies {
       // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-      build "org.eclipse.jgit:org.eclipse.jgit:3.0.0.201306101825-r"
+      // Needs to be a valid maven scope.
+      compile "org.eclipse.jgit:org.eclipse.jgit:3.0.0.201306101825-r"
     }
 
     plugins {
