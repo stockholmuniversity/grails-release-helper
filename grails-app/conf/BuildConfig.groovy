@@ -39,8 +39,8 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.jboss.com/maven2/"
     }
     dependencies {
-        // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
-        // runtime 'mysql:mysql-connector-java:5.1.24'
+      // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
+      build "org.eclipse.jgit:org.eclipse.jgit:3.0.0.201306101825-r"
     }
 
     plugins {
