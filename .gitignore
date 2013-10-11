@@ -1,0 +1,7 @@
+target
+plugin.xml
+web-app
+.idea
+*.iml
+.project
+.classpath
