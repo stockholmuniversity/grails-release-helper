@@ -1,3 +1,6 @@
+h3. v0.0.4 - October 14th. 2013
+  * Documentation
+
 h3. v0.0.3 - October 14th. 2013
   * Get credentials from ssh-agent to use in git push
 
