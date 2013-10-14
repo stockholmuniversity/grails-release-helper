@@ -42,6 +42,9 @@ grails.project.dependency.resolution = {
       // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
       // Needs to be a valid maven scope.
       compile "org.eclipse.jgit:org.eclipse.jgit:3.0.0.201306101825-r"
+      compile 'com.jcraft:jsch.agentproxy.jsch:0.0.6'
+      compile 'com.jcraft:jsch.agentproxy.usocket-jna:0.0.6'
+      compile 'com.jcraft:jsch.agentproxy.sshagent:0.0.6'
     }
 
     plugins {
