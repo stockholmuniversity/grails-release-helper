@@ -1,6 +1,6 @@
 class GrailsReleaseHelperGrailsPlugin {
     // the plugin version
-    def version = "0.0.2"
+    def version = "0.0.3"
     def groupId = "se.su.it.grails.plugins"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
