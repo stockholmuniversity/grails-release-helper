@@ -1,0 +1,26 @@
+# The plugin is published in the Stockholm University maven repository. Add it to your BuildConfig.groovy:
+{code}
+repositories {
+  ...
+
+  mavenRepo "http://maven.it.su.se/it.su.se/maven2"
+
+  ...
+}
+{code}
+
+# Install the plugin
+{code}grails install-plugin role-access-manager{code}
+
+# Alternatively add it to your BuildConfig.groovy:
+{code}
+grails.project.dependency.resolution = {
+  plugins {
+    ...
+
+    build "se.su.it.grails.plugins:grails-release-helper:0.0.3"
+
+    ...
+  }
+}
+{code}

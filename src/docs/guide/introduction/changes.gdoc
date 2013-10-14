@@ -1,0 +1,5 @@
+h3. v0.0.3 - October 14th. 2013
+  * Get credentials from ssh-agent to use in git push
+
+h3. v0.0.2 - October 11th. 2013
+  * First usable version.

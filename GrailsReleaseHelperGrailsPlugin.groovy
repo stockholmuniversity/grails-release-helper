@@ -10,7 +10,7 @@ class GrailsReleaseHelperGrailsPlugin {
     def author = "Joakim Lundin"
     def authorEmail = "joakim.lundin@gmail.com"
     def description = '''\
-Keeps the application version &amp; git tag in sync
+Keeps the application version & git tag in sync
 '''
 
     // URL to the plugin's documentation

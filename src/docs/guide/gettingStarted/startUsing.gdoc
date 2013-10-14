@@ -1,0 +1,11 @@
+The plugin adds a new target script called "update-version"
+
+h3. Update version
+To update the version run:
+{code}grails update-version{code}
+The target will prompt you for the new version, commit it in the application.properties, create a new tag with the version & push it to your default remote.
+
+h3. Specify a remote
+By default "origin" will be used as the remote to push to. But the "update-version" target takes a remote name as an argument.
+Ex: {code}grails update-version myremote{code}
+
