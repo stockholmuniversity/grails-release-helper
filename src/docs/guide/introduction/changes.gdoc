@@ -1,3 +1,6 @@
+h3. v0.0.5 - October 25th. 2013
+  * Support args --version=VERSION & --remote=REMOTE
+
 h3. v0.0.4 - October 14th. 2013
   * Documentation
 
