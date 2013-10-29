@@ -78,9 +78,16 @@ target(updateVersion: "Update the application version & push a git tag with the 
 
       // Get new version from user input
       println "Current app version: ${currentVersion}."
-      ant.input addProperty: "app.version.new", message: "Enter the new version: ", defaultvalue: currentVersion
-      def newVersion = ant.antProject.properties.'app.version.new'
 
+      // Check for the new version among the args.
+      def newVersion = argsMap["version"] ?: null
+
+      if (!newVersion) { // Get version from user input
+        ant.input addProperty: "app.version.new", message: "Enter the new version: ", defaultvalue: currentVersion
+        newVersion = ant.antProject.properties.'app.version.new'
+      }
+
+      println "Setting new version: ${newVersion}."
       metadata.'app.version' = newVersion
       metadata.persist()
 
@@ -88,20 +95,20 @@ target(updateVersion: "Update the application version & push a git tag with the 
       git.add().addFilepattern("application.properties").call()
       git.commit().setMessage("[generated] Updated version to ${newVersion}").call()
 
-      git.tag().setName(newVersion).call()
+      println "Creating new tag '${newVersion}'."
+      git.tag().setName(newVersion as String).call()
 
       setupSession.call()
 
-      def remote = Constants.DEFAULT_REMOTE_NAME
-      if (argsMap?.params?.size() > 0) {
-        remote = argsMap.params.first()
-      }
+      // Get remote or use default
+      def remote = argsMap["remote"] ?: Constants.DEFAULT_REMOTE_NAME
 
+      println "Pushing to ${remote}/${Constants.MASTER}."
       def refs = [ // Refs to push
               new RefSpec(Constants.R_HEADS + Constants.MASTER), // master ref
               new RefSpec(Constants.R_TAGS + newVersion)         // the new tag
       ]
-      git.push().setRemote(remote).setRefSpecs(refs).call()
+      git.push().setRemote(remote as String).setRefSpecs(refs).call()
     } else { // Repo is not clean, aborting
       StringBuilder msg = new StringBuilder()
       msg.append("Repo not clean, aborting version update.")

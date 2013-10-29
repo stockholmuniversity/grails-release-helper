@@ -6,6 +6,10 @@ To update the version run:
 The target will prompt you for the new version, commit it in the application.properties, create a new tag with the version & push it to your default remote.
 
 h3. Specify a remote
-By default "origin" will be used as the remote to push to. But the "update-version" target takes a remote name as an argument.
-Ex: {code}grails update-version myremote{code}
+By default "origin" will be used as the remote to push to. To specify a custom remote, use the --remote=REMOTE_NAME argument.
+Ex: {code}grails update-version --remote=myremote{code}
+
+h3. Setting the new version on command line
+By default the script will prompt for the new verison. To avoid prompting, use the --version argument.
+Ex: {code}grails update-version --version=1.2.3{code}
 
